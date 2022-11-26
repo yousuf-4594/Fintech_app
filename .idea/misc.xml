@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/ACF_proj/app/src/main/res/drawable/fwd_res.xml" value="0.329" />
+        <entry key="..\:/ACF_proj/app/src/main/res/drawable/main_disp.xml" value="0.356" />
+        <entry key="..\:/ACF_proj/app/src/main/res/drawable/main_disp3.xml" value="0.329" />
+        <entry key="..\:/ACF_proj/app/src/main/res/drawable/main_disp4.xml" value="0.329" />
+        <entry key="..\:/ACF_proj/app/src/main/res/drawable/main_disp5.xml" value="0.329" />
+        <entry key="..\:/ACF_proj/app/src/main/res/drawable/main_disp6.xml" value="0.329" />
+        <entry key="..\:/ACF_proj/app/src/main/res/drawable/main_disp_2.xml" value="0.2225" />
+        <entry key="..\:/ACF_proj/app/src/main/res/font/best_font.xml" value="0.3646153846153846" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_amount.xml" value="0.5" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_balancesheet.xml" value="0.5" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_general_journal.xml" value="0.33" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_income_statement.xml" value="0.434375" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_pdf.xml" value="0.5" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_trail_balance.xml" value="0.434375" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/balance_sheet_row.xml" value="0.4256410256410256" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/dropdown_item.xml" value="0.43333333333333335" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/popup_window.xml" value="0.434375" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/support_simple_spinner_dropdown_item.xml" value="0.4266666666666667" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/support_simple_spinner_dropdown_item2.xml" value="0.43333333333333335" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/support_simple_spinner_dropdown_item3.xml" value="0.43333333333333335" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/support_simple_spinner_dropdown_item4.xml" value="0.43333333333333335" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/table_row.xml" value="0.5" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/trail_bal_layout.xml" value="0.4266666666666667" />
+        <entry key="..\:/ACF_proj/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2395" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
