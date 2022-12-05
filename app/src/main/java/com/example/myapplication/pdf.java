@@ -70,13 +70,15 @@ public class pdf extends MainActivity {
         retainedearning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intentt = new Intent(pdf.this,retained_earning.class);
+                startActivity(intentt);
             }
         });
         ownersequity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intentt = new Intent(pdf.this,owners_equity.class);
+                startActivity(intentt);
             }
         });
 

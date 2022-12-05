@@ -6,6 +6,7 @@ public class Money {
     String credit;
 
     String servicerev;
+    String interestrev;///
 
     String rentexp;
     String salexp;
@@ -13,6 +14,7 @@ public class Money {
     String interestexp;
     String advertexp;
     String insuranceexp;
+    String utilitiesexp;//
 
     String cash;
     String offsupp;
@@ -27,6 +29,9 @@ public class Money {
     String land;
     String prepaidrent;
     String prepaidinsurance;
+    String inventoryrec;////
+    String interestrec;////
+    String noterec;/////
 
     String accpayable;
     String suppliespayables;
@@ -35,6 +40,11 @@ public class Money {
     String equipmentpayables;
     String interestpayables;
     String loanpayables;
+    String utilitiypayable;///
+    String notespayable;////
+
+    String commonstock;///////
+    String dividends;////////
 
     public Money() {
         this.servicerev = "0";
@@ -66,6 +76,17 @@ public class Money {
         this.loanpayables = "0";
         this.debit = "0";
         this.credit = "0";
+
+        this.interestrev = "0";
+        this.utilitiesexp= "0";
+        this.inventoryrec= "0";
+        this.interestrec= "0";
+        this.noterec= "0";
+        this.utilitiypayable= "0";
+        this.notespayable= "0";
+        this.commonstock= "0";
+        this.dividends= "0";
+
     }
     public String calcDebit(){
         int amount=Integer.parseInt(cash)+
@@ -86,7 +107,12 @@ public class Money {
                 Integer.parseInt(billexp)+
                 Integer.parseInt(interestexp)+
                 Integer.parseInt(advertexp)+
-                Integer.parseInt(insuranceexp);
+                Integer.parseInt(insuranceexp)+
+                Integer.parseInt(dividends)+
+                Integer.parseInt(utilitiesexp)+
+                Integer.parseInt(inventoryrec)+
+                Integer.parseInt(interestrec)+
+                Integer.parseInt(noterec);
         return Integer.toString(amount);
     }
     public String calcCredit(){
@@ -97,13 +123,14 @@ public class Money {
                 Integer.parseInt(equipmentpayables)+
                 Integer.parseInt(interestpayables)+
                 Integer.parseInt(loanpayables)+
-                Integer.parseInt(servicerev);
+                Integer.parseInt(servicerev)+
+                Integer.parseInt(interestrev)+
+                Integer.parseInt(utilitiypayable)+
+                Integer.parseInt(notespayable)+
+                Integer.parseInt(commonstock);
+
         return Integer.toString(amount);
     }
-
-
-
-
 
 
     public String calcAssets(){
@@ -119,7 +146,11 @@ public class Money {
                 Integer.parseInt(building)+
                 Integer.parseInt(land)+
                 Integer.parseInt(prepaidrent)+
-                Integer.parseInt(prepaidinsurance);
+                Integer.parseInt(prepaidinsurance)+
+                Integer.parseInt(inventoryrec)+
+                Integer.parseInt(interestrec)+
+                Integer.parseInt(noterec);
+
         return Integer.toString(amount);
     }
     public String calcLiabilities(){
@@ -129,11 +160,18 @@ public class Money {
                 Integer.parseInt(advertisementpayables)+
                 Integer.parseInt(equipmentpayables)+
                 Integer.parseInt(interestpayables)+
-                Integer.parseInt(loanpayables);
+                Integer.parseInt(loanpayables)+
+                Integer.parseInt(utilitiypayable)+
+                Integer.parseInt(notespayable);
+
         return Integer.toString(amount);
     }
     public String calcRevenue(){
-        return servicerev;
+        int amount=Integer.parseInt(servicerev)+
+                Integer.parseInt(interestrev);
+
+
+        return Integer.toString(amount);
     }
     public String calcExpenses(){
         int amount=Integer.parseInt(rentexp)+
@@ -141,9 +179,12 @@ public class Money {
                 Integer.parseInt(billexp)+
                 Integer.parseInt(interestexp)+
                 Integer.parseInt(advertexp)+
-                Integer.parseInt(insuranceexp);
+                Integer.parseInt(insuranceexp)+
+                Integer.parseInt(utilitiesexp);
+
         return Integer.toString(amount);
     }
+
     public String calcProfit(){
         int rev =Integer.parseInt(calcRevenue());
         int exp =Integer.parseInt(calcExpenses());
@@ -153,17 +194,19 @@ public class Money {
     public String calcBalance(){
         return calcLiabilities();
     }
-    public void insert(String val,int amount){
 
-        if(val.equals("Service Revenue")==true){
-            int temp = amount +Integer.parseInt(servicerev);
-            servicerev = Integer.toString(temp);
-            int temp2 = amount + Integer.parseInt(cash);
-            cash = Integer.toString(temp2);
-        }
-        else if(val.equals("Rent Expenses")==true){
+    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    public void addinsert(String val,int amount){
+
+        if(val.equals("Rent Expenses")==true){
             int temp = amount +Integer.parseInt(rentexp);
             rentexp = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) - amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Salaries Expenses")==true){
+            int temp = amount +Integer.parseInt(salexp);
+            salexp = Integer.toString(temp);
             int temp2 = Integer.parseInt(cash) - amount;
             cash = Integer.toString(temp2);
         }
@@ -197,95 +240,101 @@ public class Money {
 //            int temp2 = amount + Integer.parseInt(cash);
 //            cash = Integer.toString(temp2);
 //        }
+        else if(val.equals("Utilities Expense")==true){
+            int temp = amount +Integer.parseInt(utilitiesexp);
+            utilitiesexp = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) - amount;
+            cash = Integer.toString(temp2);
+        }
         else if(val.equals("Office Supplies")==true){
             int temp = amount +Integer.parseInt(offsupp);
             offsupp = Integer.toString(temp);
             int temp2 = Integer.parseInt(cash) - amount;
             cash = Integer.toString(temp2);
         }
-        else if(val.equals("Office Supplies on account")==true){
-            int temp = amount +Integer.parseInt(offsupp);
-            offsupp = Integer.toString(temp);
-            int temp2 = amount + Integer.parseInt(accpayable);
-            accpayable = Integer.toString(temp2);
-        }
+//        else if(val.equals("Office Supplies on account")==true){
+//            int temp = amount +Integer.parseInt(offsupp);
+//            offsupp = Integer.toString(temp);
+//            int temp2 = amount + Integer.parseInt(accpayable);
+//            accpayable = Integer.toString(temp2);
+//        }
         else if(val.equals("Item-Sneakers")==true){
             int temp = amount +Integer.parseInt(sneakers);
             sneakers = Integer.toString(temp);
             int temp2 = Integer.parseInt(cash) - amount;
             cash = Integer.toString(temp2);
         }
-        else if(val.equals("Item-Sneakers on account")==true){
-            int temp = amount +Integer.parseInt(sneakers);
-            sneakers = Integer.toString(temp);
-            int temp2 = amount + Integer.parseInt(accpayable);
-            accpayable = Integer.toString(temp2);
-        }
+//        else if(val.equals("Item-Sneakers on account")==true){
+//            int temp = amount +Integer.parseInt(sneakers);
+//            sneakers = Integer.toString(temp);
+//            int temp2 = amount + Integer.parseInt(accpayable);
+//            accpayable = Integer.toString(temp2);
+//        }
         else if(val.equals("Item-Trainers")==true){
             int temp = amount +Integer.parseInt(trainers);
             trainers = Integer.toString(temp);
             int temp2 = Integer.parseInt(cash) - amount;
             cash = Integer.toString(temp2);
         }
-        else if(val.equals("Item-Trainers on account")==true){
-            int temp = amount +Integer.parseInt(trainers);
-            trainers = Integer.toString(temp);
-            int temp2 = amount + Integer.parseInt(accpayable);
-            accpayable = Integer.toString(temp2);
-        }
+//        else if(val.equals("Item-Trainers on account")==true){
+//            int temp = amount +Integer.parseInt(trainers);
+//            trainers = Integer.toString(temp);
+//            int temp2 = amount + Integer.parseInt(accpayable);
+//            accpayable = Integer.toString(temp2);
+//        }
         else if(val.equals("Item-Grippers")==true){
             int temp = amount +Integer.parseInt(grippers);
             grippers = Integer.toString(temp);
             int temp2 = Integer.parseInt(cash) - amount;
             cash = Integer.toString(temp2);
         }
-        else if(val.equals("Item-Grippers on account")==true){
-            int temp = amount +Integer.parseInt(grippers);
-            grippers = Integer.toString(temp);
-            int temp2 = amount + Integer.parseInt(accpayable);
-            accpayable = Integer.toString(temp2);
-        }
+//        else if(val.equals("Item-Grippers on account")==true){
+//            int temp = amount +Integer.parseInt(grippers);
+//            grippers = Integer.toString(temp);
+//            int temp2 = amount + Integer.parseInt(accpayable);
+//            accpayable = Integer.toString(temp2);
+//        }
         else if(val.equals("Item-Crocs")==true){
             int temp = amount +Integer.parseInt(crocs);
             crocs = Integer.toString(temp);
             int temp2 = Integer.parseInt(cash) - amount;
             cash = Integer.toString(temp2);
         }
-        else if(val.equals("Item-Crocs on account")==true){
-            int temp = amount +Integer.parseInt(crocs);
-            crocs = Integer.toString(temp);
-            int temp2 = amount + Integer.parseInt(accpayable);
-            accpayable = Integer.toString(temp2);
-        }
+//        else if(val.equals("Item-Crocs on account")==true){
+//            int temp = amount +Integer.parseInt(crocs);
+//            crocs = Integer.toString(temp);
+//            int temp2 = amount + Integer.parseInt(accpayable);
+//            accpayable = Integer.toString(temp2);
+//        }
         else if(val.equals("Equipment")==true){
             int temp = amount +Integer.parseInt(equipment);
             equipment = Integer.toString(temp);
             int temp2 = Integer.parseInt(cash) - amount;
             cash = Integer.toString(temp2);
         }
-        else if(val.equals("Equipment on account")==true){
-            int temp = amount +Integer.parseInt(equipment);
-            equipment = Integer.toString(temp);
-            int temp2 = amount + Integer.parseInt(accpayable);
-            accpayable = Integer.toString(temp2);
-        }
+//        else if(val.equals("Equipment on account")==true){
+//            int temp = amount +Integer.parseInt(equipment);
+//            equipment = Integer.toString(temp);
+//            int temp2 = amount + Integer.parseInt(accpayable);
+//            accpayable = Integer.toString(temp2);
+//        }
         else if(val.equals("Furniture")==true){
             int temp = amount +Integer.parseInt(furniture);
             furniture = Integer.toString(temp);
             int temp2 = Integer.parseInt(cash) - amount;
             cash = Integer.toString(temp2);
         }
-        else if(val.equals("Furniture on account")==true){
-            int temp = amount +Integer.parseInt(furniture);
-            furniture = Integer.toString(temp);
-            int temp2 = amount + Integer.parseInt(accpayable);
-            accpayable = Integer.toString(temp2);
-        }
+//        else if(val.equals("Furniture on account")==true){
+//            int temp = amount +Integer.parseInt(furniture);
+//            furniture = Integer.toString(temp);
+//            int temp2 = amount + Integer.parseInt(accpayable);
+//            accpayable = Integer.toString(temp2);
+//        }
         else if(val.equals("A/c Receivables")==true){
             int temp = amount +Integer.parseInt(ac_recievables);
             ac_recievables = Integer.toString(temp);
-            int temp2 = amount + Integer.parseInt(servicerev);
-            servicerev = Integer.toString(temp2);
+            int temp2 =Integer.parseInt(cash) -  amount ;
+            cash = Integer.toString(temp2);
         }
         else if(val.equals("Building")==true){
             int temp = amount +Integer.parseInt(building);
@@ -311,6 +360,25 @@ public class Money {
             int temp2 = Integer.parseInt(cash) - amount;
             cash = Integer.toString(temp2);
         }
+        else if(val.equals("Inventory Receivables")==true){
+            int temp = amount +Integer.parseInt(inventoryrec);
+            inventoryrec = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) - amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Interest Receivables")==true){
+            int temp = amount +Integer.parseInt(interestrec);
+            interestrec = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) - amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Notes Receivables")==true){
+            int temp = amount +Integer.parseInt(noterec);
+            noterec = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) - amount;
+            cash = Integer.toString(temp2);
+        }
+
         else if(val.equals("Account Payable")==true){
             int temp = amount +Integer.parseInt(accpayable);
             accpayable = Integer.toString(temp);
@@ -353,7 +421,251 @@ public class Money {
             int temp2 = amount + Integer.parseInt(cash);
             cash = Integer.toString(temp2);
         }
+
+        else if(val.equals("Notes Payable")==true){
+            int temp = amount +Integer.parseInt(notespayable);
+            notespayable = Integer.toString(temp);
+            int temp2 = amount + Integer.parseInt(cash);
+            cash = Integer.toString(temp2);
+        }
+
+        else if(val.equals("Common stock")==true){
+            int temp = amount +Integer.parseInt(commonstock);
+            commonstock = Integer.toString(temp);
+            int temp2 = amount + Integer.parseInt(cash);
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Dividends")==true){
+            int temp = amount +Integer.parseInt(dividends);
+            dividends = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) - amount;
+            cash = Integer.toString(temp2);
+        }
     }
+    public void decinsert(String val,int amount) {
+
+        if(val.equals("Office Supplies")==true){
+            int temp =Integer.parseInt(offsupp) -  amount ;
+            offsupp = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Item-Sneakers")==true){
+            int temp = Integer.parseInt(sneakers) -  amount ;
+            sneakers = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Item-Trainers")==true){
+            int temp = Integer.parseInt(trainers) -  amount ;
+            trainers = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Item-Grippers")==true){
+            int temp = Integer.parseInt(grippers) -  amount ;
+            grippers = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Item-Crocs")==true){
+            int temp = Integer.parseInt(crocs) -  amount ;
+            crocs = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Equipment")==true){
+            int temp = Integer.parseInt(equipment) -  amount ;
+            equipment = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Furniture")==true){
+            int temp = Integer.parseInt(furniture) -  amount ;
+            furniture = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("A/c Receivables")==true){
+            int temp = Integer.parseInt(ac_recievables) -  amount ;
+            ac_recievables = Integer.toString(temp);
+            int temp2 =Integer.parseInt(cash) +  amount ;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Building")==true){
+            int temp = Integer.parseInt(building) -  amount ;
+            building = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Land")==true){
+            int temp = Integer.parseInt(land) -  amount ;
+            land = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Prepaid Rent")==true){
+            int temp = Integer.parseInt(prepaidrent) -  amount ;
+            prepaidrent = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Prepaid Insurance")==true){
+            int temp = Integer.parseInt(prepaidinsurance) -  amount ;
+            prepaidinsurance = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Inventory Receivables")==true){
+            int temp = Integer.parseInt(inventoryrec) -  amount ;
+            inventoryrec = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Interest Receivables")==true){
+            int temp = Integer.parseInt(interestrec) -  amount ;
+            interestrec = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Notes Receivables")==true){
+            int temp = Integer.parseInt(noterec) -  amount ;
+            noterec = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+
+        else if(val.equals("Account Payable")==true){
+            int temp = Integer.parseInt(accpayable) -  amount ;
+            accpayable = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) -  amount ;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Supplies Payable")==true){
+            int temp = Integer.parseInt(suppliespayables) -  amount ;
+            suppliespayables = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) -  amount ;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Unearned Revenue")==true){
+            int temp = Integer.parseInt(unearnedrevenue) -  amount ;
+            unearnedrevenue = Integer.toString(temp);
+            int temp2 = Integer.parseInt(servicerev) +  amount ;
+            servicerev = Integer.toString(temp2);
+        }
+        else if(val.equals("Advertisement Payable")==true){
+            int temp = Integer.parseInt(advertisementpayables) -  amount ;
+            advertisementpayables = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) - amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Equipment Payable")==true){
+            int temp = Integer.parseInt(equipmentpayables) -  amount ;
+            equipmentpayables = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) - amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Interest Payable")==true){
+            int temp = Integer.parseInt(interestpayables) -  amount ;
+            interestpayables = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) - amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Loan Payable")==true){
+            int temp = Integer.parseInt(loanpayables) -  amount ;
+            loanpayables = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) - amount;
+            cash = Integer.toString(temp2);
+        }
+
+        else if(val.equals("Notes Payable")==true){
+            int temp =     Integer.parseInt(notespayable) -  amount ;
+            notespayable = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) - amount;
+            cash = Integer.toString(temp2);
+        }
+    }
+    public void incinsertservicerev(String val,int amount) {
+        if(val.equals("Service Revenue")==true){
+            int temp = amount +Integer.parseInt(servicerev);
+            servicerev = Integer.toString(temp);
+            int temp2 = amount + Integer.parseInt(cash);
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Interest Revenue")==true){
+            int temp = amount +Integer.parseInt(interestrev);
+            interestrev = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+
+
+        else if(val.equals("Item-Sneakers")==true){
+            int temp = Integer.parseInt(sneakers) - amount ;
+            sneakers = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Item-Trainers")==true){
+            int temp = Integer.parseInt(trainers) - amount ;
+            trainers = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+        else if(val.equals("Item-Grippers")==true){
+            int temp = Integer.parseInt(grippers) - amount ;
+            grippers = Integer.toString(temp);
+            int temp2 = Integer.parseInt(cash) + amount;
+            cash = Integer.toString(temp2);
+        }
+
+    }
+
+
+
+    public void initinsert(String val,int amount) {
+        if(val.equals("cash")==true){
+            int temp = amount +Integer.parseInt(cash);
+            cash = Integer.toString(temp);
+        }
+        else if(val.equals("Item-Sneakers")==true){
+            int temp = amount +Integer.parseInt(sneakers);
+            sneakers = Integer.toString(temp);
+        }
+        else if(val.equals("Item-Trainers")==true){
+            int temp = amount +Integer.parseInt(trainers);
+            trainers = Integer.toString(temp);
+        }
+        else if(val.equals("Item-Grippers")==true){
+            int temp = amount +Integer.parseInt(grippers);
+            grippers= Integer.toString(temp);
+        }
+        else if(val.equals("Land")==true){
+            int temp = amount +Integer.parseInt(land);
+            land = Integer.toString(temp);
+        }
+        else if(val.equals("Building")==true){
+            int temp = amount +Integer.parseInt(building);
+            building = Integer.toString(temp);
+        }
+        else if(val.equals("Prepaid Rent")==true){
+            int temp = amount +Integer.parseInt(prepaidrent);
+            prepaidrent = Integer.toString(temp);
+        }
+        else if(val.equals("Furniture")==true){
+            int temp = amount +Integer.parseInt(furniture);
+            furniture = Integer.toString(temp);
+        }
+        else if(val.equals("Account Payable")==true){
+            int temp = amount +Integer.parseInt(accpayable);
+            accpayable = Integer.toString(temp);
+        }
+        else if(val.equals("Service Revenue")==true){
+            int temp = amount +Integer.parseInt(servicerev);
+            servicerev = Integer.toString(temp);
+        }
+    }
+
 
     public String getServicerev() {
         return servicerev;
@@ -570,4 +882,90 @@ public class Money {
     public void setLoanpayables(String loanpayables) {
         this.loanpayables = loanpayables;
     }
+
+
+    public String getInterestrev() {
+        return interestrev;
+    }
+
+    public void setInterestrev(String interestrev) {
+        this.interestrev = interestrev;
+    }
+
+    public String getUtilitiesexp() {
+        return utilitiesexp;
+    }
+
+    public void setUtilitiesexp(String utilitiesexp) {
+        this.utilitiesexp = utilitiesexp;
+    }
+
+    public String getInventoryrec() {
+        return inventoryrec;
+    }
+
+    public void setInventoryrec(String inventoryrec) {
+        this.inventoryrec = inventoryrec;
+    }
+
+    public String getInterestrec() {
+        return interestrec;
+    }
+
+    public void setInterestrec(String interestrec) {
+        this.interestrec = interestrec;
+    }
+
+    public String getNoterec() {
+        return noterec;
+    }
+
+    public void setNoterec(String noterec) {
+        this.noterec = noterec;
+    }
+
+    public String getUtilitiypayable() {
+        return utilitiypayable;
+    }
+
+    public void setUtilitiypayable(String utilitiypayable) {
+        this.utilitiypayable = utilitiypayable;
+    }
+
+    public String getNotespayable() {
+        return notespayable;
+    }
+
+    public void setNotespayable(String notespayable) {
+        this.notespayable = notespayable;
+    }
+
+    public String getCommonstock() {
+        return commonstock;
+    }
+
+    public void setCommonstock(String commonstock) {
+        this.commonstock = commonstock;
+    }
+
+    public String getDividends() {
+        return dividends;
+    }
+
+    public void setDividends(String dividends) {
+        this.dividends = dividends;
+    }
+
+
+
+
 }
+
+
+
+
+
+
+
+
+

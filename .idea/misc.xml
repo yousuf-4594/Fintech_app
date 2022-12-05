@@ -10,13 +10,17 @@
         <entry key="..\:/ACF_proj/app/src/main/res/drawable/main_disp5.xml" value="0.329" />
         <entry key="..\:/ACF_proj/app/src/main/res/drawable/main_disp6.xml" value="0.329" />
         <entry key="..\:/ACF_proj/app/src/main/res/drawable/main_disp_2.xml" value="0.2225" />
+        <entry key="..\:/ACF_proj/app/src/main/res/drawable/main_disp_7.xml" value="0.287" />
         <entry key="..\:/ACF_proj/app/src/main/res/font/best_font.xml" value="0.3646153846153846" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_add_initial_asset.xml" value="0.434375" />
         <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_amount.xml" value="0.5" />
         <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_balancesheet.xml" value="0.5" />
         <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_general_journal.xml" value="0.33" />
         <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_income_statement.xml" value="0.434375" />
         <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_owners_equity.xml" value="0.5" />
         <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_pdf.xml" value="0.5" />
+        <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_retained_earning.xml" value="0.42291666666666666" />
         <entry key="..\:/ACF_proj/app/src/main/res/layout/activity_trail_balance.xml" value="0.434375" />
         <entry key="..\:/ACF_proj/app/src/main/res/layout/balance_sheet_row.xml" value="0.4256410256410256" />
         <entry key="..\:/ACF_proj/app/src/main/res/layout/dropdown_item.xml" value="0.43333333333333335" />

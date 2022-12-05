@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     ImageButton expenses;
     ImageButton assets;
     ImageButton liabilities;
+    ImageButton initvals;
+    ImageButton equity;
     ImageButton cashbook;
     ImageButton report;
 
@@ -57,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
         liabilities = findViewById(R.id.imageView4);
         cashbook = findViewById(R.id.imageButton);
         report = findViewById(R.id.imageButton2);
+        initvals = findViewById(R.id.imageView40);
+        equity = findViewById(R.id.imageView41);
+
 
         BALANCE = findViewById(R.id.textView21);
         PROFIT = findViewById(R.id.textView30);
@@ -117,8 +122,24 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_up,  R.anim.no_animation);
             }
         });
-
-
+        initvals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,amount.class);
+                String message = "init";
+                intent.putExtra("message",message);
+                startActivity(intent);
+            }
+        });
+        equity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,amount.class);
+                String message = "equity";
+                intent.putExtra("message",message);
+                startActivity(intent);
+            }
+        });
 
     }
     @Override

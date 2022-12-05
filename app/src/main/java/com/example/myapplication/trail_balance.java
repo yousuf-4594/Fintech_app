@@ -21,6 +21,8 @@ public class trail_balance extends AppCompatActivity {
 
         recyclerrr=findViewById(R.id.recy_view);
         bal.clear();
+
+        //assets
         if(amount.money.getCash().equals("0")==false)
             bal.add(new Trail_bal_Class("Cash",amount.money.getCash(),"   "));
         if(amount.money.getAc_recievables().equals("0")==false)
@@ -47,7 +49,15 @@ public class trail_balance extends AppCompatActivity {
             bal.add(new Trail_bal_Class("Prepaid Rent",amount.money.getPrepaidrent(),"   "));
         if(amount.money.getPrepaidinsurance().equals("0")==false)
             bal.add(new Trail_bal_Class("Prepaid Insurance",amount.money.getPrepaidinsurance(),"   "));
+        if(amount.money.getInventoryrec().equals("0")==false)
+            bal.add(new Trail_bal_Class("Inventory Recievable",amount.money.getInventoryrec(),"   "));
+        if(amount.money.getInterestrec().equals("0")==false)
+            bal.add(new Trail_bal_Class("Interest Recievable",amount.money.getInterestrec(),"   "));
+        if(amount.money.getNoterec().equals("0")==false)
+            bal.add(new Trail_bal_Class("Note Recievable",amount.money.getNoterec(),"   "));
 
+
+        //liabilities
         if(amount.money.getAccpayable().equals("0")==false)
             bal.add(new Trail_bal_Class("Account Payable","   ",amount.money.getAccpayable()));
         if(amount.money.getSuppliespayables().equals("0")==false)
@@ -62,8 +72,23 @@ public class trail_balance extends AppCompatActivity {
             bal.add(new Trail_bal_Class("Interest Payable","   ",amount.money.getInterestpayables()));
         if(amount.money.getLoanpayables().equals("0")==false)
             bal.add(new Trail_bal_Class("Loan Payable","   ",amount.money.getLoanpayables()));
+        if(amount.money.getNotespayable().equals("0")==false)
+            bal.add(new Trail_bal_Class("Note Payable","   ",amount.money.getNotespayable()));
+
+        //equity
+        if(amount.money.getCommonstock().equals("0")==false)
+            bal.add(new Trail_bal_Class("Common Stock","   ",amount.money.getCommonstock()));
+        if(amount.money.getDividends().equals("0")==false)
+            bal.add(new Trail_bal_Class("Dividends",amount.money.getDividends(),"   "));
+
+        //revenue
         if(amount.money.getServicerev().equals("0")==false)
             bal.add(new Trail_bal_Class("Service Revenue","   ",amount.money.getServicerev()));
+        if(amount.money.getInterestrev().equals("0")==false)
+            bal.add(new Trail_bal_Class("Interest Revenue","   ",amount.money.getInterestrev()));
+
+
+        //expenses
         if(amount.money.getRentexp().equals("0")==false)
             bal.add(new Trail_bal_Class("Rent Expenses",amount.money.getRentexp(),"   "));
         if(amount.money.getSalexp().equals("0")==false)
@@ -76,6 +101,11 @@ public class trail_balance extends AppCompatActivity {
             bal.add(new Trail_bal_Class("Advertising Expenses",amount.money.getAdvertexp(),"   "));
         if(amount.money.getInsuranceexp().equals("0")==false)
             bal.add(new Trail_bal_Class("Insurance Expenses",amount.money.getInsuranceexp(),"   "));
+        if(amount.money.getUtilitiesexp().equals("0")==false)
+            bal.add(new Trail_bal_Class("Utilities Expenses",amount.money.getUtilitiesexp(),"   "));
+
+
+
 
         bal.add(new Trail_bal_Class("Total",amount.money.calcDebit(),amount.money.calcCredit()));
 
